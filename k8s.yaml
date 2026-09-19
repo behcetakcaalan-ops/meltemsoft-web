@@ -1,0 +1,111 @@
+# Meltemsoft tanıtım sayfası — RKE2 kümesi dağıtımı.
+#
+# Küme: kbmaster01, registry 216.9.226.115:30500, ingressClassName nginx,
+# sertifika cert-manager/letsencrypt-prod.
+#
+# Alan adları (meltemsoft.com ve www.meltemsoft.com), registry adresi ve
+# ingress sınıfı kümenin mevcut kurulumuna göre doldurulmuş — düzenleme gerekmiyor.
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: meltemsoft-web
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meltemsoft-web
+  namespace: meltemsoft-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: meltemsoft-web
+  template:
+    metadata:
+      labels:
+        app: meltemsoft-web
+    spec:
+      # İki kopya ayrı düğümlere dağılsın; düğüm kaybında sayfa ayakta kalır.
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: meltemsoft-web
+      containers:
+        - name: web
+          # Küme içi registry — düğümlerin /etc/rancher/rke2/registries.yaml
+          # dosyasında zaten güvenilir tanımlı (it-yonetim-programi da
+          # buradan çekiliyor), ek bir düğüm ayarı gerekmiyor.
+          image: 216.9.226.115:30500/meltemsoft-web:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              name: http
+          resources:
+            requests:
+              cpu: 10m
+              memory: 24Mi
+            limits:
+              memory: 96Mi
+          readinessProbe:
+            httpGet: { path: /saglik, port: http }
+            initialDelaySeconds: 2
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /saglik, port: http }
+            initialDelaySeconds: 10
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meltemsoft-web
+  namespace: meltemsoft-web
+spec:
+  selector:
+    app: meltemsoft-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: meltemsoft-web
+  namespace: meltemsoft-web
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  # RKE2 kendi ingress-nginx'iyle gelir (rke2-ingress-nginx).
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - meltemsoft.com
+        - www.meltemsoft.com
+      secretName: meltemsoft-web-tls
+  rules:
+    # Her iki adres de aynı sayfaya düşer.
+    - host: meltemsoft.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: meltemsoft-web
+                port:
+                  name: http
+    - host: www.meltemsoft.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: meltemsoft-web
+                port:
+                  name: http

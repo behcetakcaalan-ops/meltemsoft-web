@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Meltemsoft — OpsPlane IT varlık, erişim ve risk yönetimi platformu ve GumrukNet gümrük masası. Kendi sunucunuzda çalışan, baştan sona Türkçe kurumsal yazılım.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Meltemsoft">
+<meta property="og:description" content="Kurumsal BT'nin tamamı tek kontrol düzleminde.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<style>
+  :root { color-scheme: light dark; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Meltemsoft</title>
+<style>
+  /* ---------- Jetonlar: açık tema (çıplak :root) ---------- */
+  :root {
+    --ink-900: #000000;
+    --ink-850: #0B0B0C;
+    --ink-800: #161617;
+    --ink-750: #1D1D1F;
+    --ink-700: #2C2C2E;
+
+    --blue:  #0071E3;
+    --blue-soft: #2997FF;
+    --cyan:  #64D2FF;
+    --cyan-bright: #7BD9FF;
+
+    --ok: #248A3D;
+    --warn: #B25000;
+    --crit: #D70015;
+
+    --bg:      #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-2: #F5F5F7;
+    --ink:     #1D1D1F;
+    --ink-2:   #424245;
+    --muted:   #6E6E73;
+    --border:  #D2D2D7;
+    --border-strong: #BFBFC4;
+    --accent:  var(--blue);
+    --accent-ink: #0066CC;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px -20px rgba(0,0,0,.28);
+
+    /* Kahraman bölüm — açık temada beyaz zemin */
+    --hero-bg: radial-gradient(900px 430px at 16% -12%, rgba(0,113,227,.13), transparent 62%),
+               radial-gradient(700px 400px at 92% 6%, rgba(100,210,255,.12), transparent 60%),
+               linear-gradient(180deg, #FBFBFD, #FFFFFF);
+    --hero-ink: #1D1D1F;
+    --hero-ink-2: #6E6E73;
+    --hero-eyebrow: #86868B;
+    --hero-line: #D2D2D7;
+    --hero-line-strong: rgba(0,0,0,.32);
+    --hero-streak: rgba(0,0,0,.16);
+    --hero-grad: linear-gradient(100deg, #0071E3, #2997FF);
+
+    /* Kurumsal logo renkleri — markanın kendi tonları */
+    --logo-ink: #16243D;
+    --logo-teal: #22A79B;
+    --logo-tagline: #6E6E73;
+
+    --maxw: 1140px;
+    --r-s: 6px;
+    --r-m: 10px;
+    --r-l: 16px;
+  }
+
+  /* ---------- Jetonlar: koyu tema ---------- */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:      #000000;
+      --surface: #1D1D1F;
+      --surface-2: #161617;
+      --ink:     #F5F5F7;
+      --ink-2:   #D2D2D7;
+      --muted:   #86868B;
+      --border:  #2C2C2E;
+      --border-strong: #3A3A3C;
+      --accent:  #2997FF;
+      --accent-ink: #2997FF;
+      --ok: #30D158;
+      --warn: #FF9F0A;
+      --crit: #FF453A;
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 20px 44px -26px rgba(0,0,0,.9);
+
+      --hero-bg: radial-gradient(900px 430px at 16% -12%, rgba(0,113,227,.28), transparent 62%),
+                 radial-gradient(700px 400px at 92% 6%, rgba(100,210,255,.14), transparent 60%),
+                 linear-gradient(175deg, #161617, #000000);
+      --hero-ink: #F5F5F7;
+      --hero-ink-2: #A1A1A6;
+      --hero-eyebrow: #86868B;
+      --hero-line: rgba(255,255,255,.10);
+      --hero-line-strong: rgba(255,255,255,.30);
+      --hero-streak: rgba(255,255,255,.45);
+      --hero-grad: linear-gradient(100deg, #2997FF, #7BD9FF);
+
+      --logo-ink: #F5F5F7;
+      --logo-teal: #35D6C8;
+      --logo-tagline: #86868B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:      #000000;
+    --surface: #1D1D1F;
+    --surface-2: #161617;
+    --ink:     #F5F5F7;
+    --ink-2:   #D2D2D7;
+    --muted:   #86868B;
+    --border:  #2C2C2E;
+    --border-strong: #3A3A3C;
+    --accent:  #2997FF;
+    --accent-ink: #2997FF;
+    --ok: #30D158;
+    --warn: #FF9F0A;
+    --crit: #FF453A;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 20px 44px -26px rgba(0,0,0,.9);
+
+    --hero-bg: radial-gradient(900px 430px at 16% -12%, rgba(0,113,227,.28), transparent 62%),
+               radial-gradient(700px 400px at 92% 6%, rgba(100,210,255,.14), transparent 60%),
+               linear-gradient(175deg, #161617, #000000);
+    --hero-ink: #F5F5F7;
+    --hero-ink-2: #A1A1A6;
+    --hero-eyebrow: #86868B;
+    --hero-line: rgba(255,255,255,.10);
+    --hero-line-strong: rgba(255,255,255,.30);
+    --hero-streak: rgba(255,255,255,.45);
+    --hero-grad: linear-gradient(100deg, #2997FF, #7BD9FF);
+
+    --logo-ink: #F5F5F7;
+    --logo-teal: #35D6C8;
+    --logo-tagline: #86868B;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { text-wrap: balance; margin: 0; letter-spacing: -0.018em; line-height: 1.1; font-weight: 600; }
+  p { margin: 0; }
+  a { color: inherit; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 20px; }
+
+  .mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+
+  /* ---------- Kurumsal logo ---------- */
+  .logo { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .logo-mark { display: block; flex: none; border-radius: 22%; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-word { font-size: 19px; font-weight: 700; letter-spacing: -.028em; color: var(--logo-ink); white-space: nowrap; }
+  .logo-word i { font-style: normal; color: var(--logo-teal); }
+  .logo-tagline {
+    margin-top: 4px; font-size: 8px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--logo-tagline); white-space: nowrap;
+  }
+  .logo-code {
+    flex: none; display: inline-flex; align-items: center; justify-content: center;
+    height: 20px; padding: 0 9px; border-radius: 999px;
+    background: var(--logo-teal); color: #fff;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px; font-weight: 500; letter-spacing: .02em;
+  }
+  .logo-lg .logo-word { font-size: 24px; }
+  .logo-lg .logo-tagline { font-size: 9px; }
+  @media (max-width: 480px) {
+    .logo-code { display: none; }
+    .logo-word { font-size: 17px; }
+  }
+
+  /* ---------- Üst çubuk ---------- */
+  .topbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 40;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .topbar.is-stuck { border-bottom-color: var(--border); }
+  .topbar-in {
+    display: flex; align-items: center; gap: 20px;
+    height: 62px;
+  }
+  .brand { flex: none; }
+  .nav { display: flex; gap: 22px; margin-left: auto; align-items: center; }
+  .nav a { text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--ink-2); }
+  .nav a:hover { color: var(--accent-ink); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 18px; border-radius: 999px;
+    font-size: 14.5px; font-weight: 600; text-decoration: none;
+    border: 1px solid transparent; cursor: pointer;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: #0071E3; color: #fff; }
+  .btn-primary:hover { background: #0077ED; }
+  .btn-ghost { border-color: var(--border-strong); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .btn-onnavy { border-color: var(--hero-line-strong); color: var(--hero-ink); background: transparent; }
+  .btn-onnavy:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- Kahraman bölüm ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    border-bottom: 1px solid var(--hero-line);
+  }
+  /* "meltem" — yavaş süzülen ışık şeritleri */
+  .breeze { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .breeze i {
+    position: absolute; left: -40%; height: 1px; width: 70%;
+    background: linear-gradient(90deg, transparent, var(--hero-streak), transparent);
+    filter: blur(.4px);
+    animation: drift linear infinite;
+  }
+  .breeze i:nth-child(1) { top: 22%; animation-duration: 19s; opacity: .5; }
+  .breeze i:nth-child(2) { top: 47%; animation-duration: 27s; animation-delay: -8s; opacity: .32; }
+  .breeze i:nth-child(3) { top: 71%; animation-duration: 23s; animation-delay: -14s; opacity: .4; }
+  @keyframes drift { from { transform: translateX(0); } to { transform: translateX(200%); } }
+  @media (prefers-reduced-motion: reduce) { .breeze i { animation: none; opacity: .22; } }
+
+  .hero-in {
+    position: relative;
+    display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+    gap: 56px; align-items: center;
+    padding-block: 76px 64px;
+  }
+  .hero .eyebrow { color: var(--hero-eyebrow); }
+  .hero h1 { font-size: clamp(34px, 5.1vw, 56px); color: var(--hero-ink); letter-spacing: -.028em; }
+  .hero h1 em { font-style: normal; background: var(--hero-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-lead { margin-top: 20px; font-size: 17.5px; line-height: 1.66; color: var(--hero-ink-2); max-width: 56ch; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+  /* Üç düzlem şeması */
+  .planes { width: 100%; max-width: 420px; margin-inline: auto; }
+  .planes svg { display: block; width: 100%; height: auto; max-width: 100%; }
+  .plane-legend { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .plane-legend li { display: grid; grid-template-columns: 10px 1fr; gap: 12px; align-items: start; font-size: 13.5px; color: var(--hero-ink-2); line-height: 1.45; }
+  .plane-legend b { display: block; color: var(--hero-ink); font-weight: 600; font-size: 13.5px; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; margin-top: 5px; }
+
+  /* ---------- Sayı şeridi ---------- */
+  .metrics {
+    position: relative;
+    border-top: 1px solid var(--hero-line);
+    background: var(--surface-2);
+  }
+  .metrics-in { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--border); }
+  .metric { background: var(--surface-2); padding: 22px 16px; text-align: center; }
+  .metric b { display: block; font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 26px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .metric span { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); letter-spacing: .02em; }
+
+  /* ---------- Genel bölüm ---------- */
+  section { padding-block: 84px; }
+  .band { background: var(--surface-2); border-block: 1px solid var(--border); }
+  .sec-head { max-width: 62ch; margin-bottom: 44px; }
+  .sec-head h2 { font-size: clamp(26px, 3.4vw, 36px); }
+  .sec-head p { margin-top: 16px; color: var(--ink-2); font-size: 16.5px; line-height: 1.68; }
+
+  /* Neden Meltemsoft */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border); }
+  .pillar { padding: 28px 28px 30px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .pillar:last-child { border-right: none; }
+  .pillar h3 { font-size: 17px; margin-bottom: 10px; }
+  .pillar p { color: var(--muted); font-size: 14.5px; line-height: 1.62; }
+  .pillar .k { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: .16em; color: var(--accent-ink); text-transform: uppercase; display: block; margin-bottom: 14px; }
+
+  /* Ürün bloğu */
+  .product { border-top: 1px solid var(--border); }
+  .product-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+  .product-badge {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--muted);
+  }
+  .product-badge.live { border-color: color-mix(in srgb, var(--ok) 45%, transparent); color: var(--ok); }
+  .product-badge.soon { border-color: color-mix(in srgb, var(--warn) 45%, transparent); color: var(--warn); }
+  .product-title { display: flex; align-items: center; gap: 14px; margin: 18px 0 0; }
+  .product-title h2 { font-size: clamp(28px, 3.8vw, 40px); letter-spacing: -.03em; }
+  .product-sub { margin-top: 10px; font-size: 17px; color: var(--accent-ink); font-weight: 600; }
+  .product-desc { margin-top: 18px; color: var(--ink-2); font-size: 16px; line-height: 1.7; }
+  .product-desc + .product-desc { margin-top: 14px; }
+
+  /* Öne çıkan özellikler */
+  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 46px; }
+  .feature {
+    background: var(--surface-2); border: 1px solid transparent; border-radius: 18px;
+    padding: 26px 26px 28px;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .feature:hover { border-color: var(--border); transform: translateY(-2px); }
+  .feature h3 { font-size: 16.5px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .feature h3 svg { flex: none; }
+  .feature p { color: var(--muted); font-size: 14.5px; line-height: 1.64; }
+  .feature ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+  .feature li { font-size: 13.5px; color: var(--ink-2); padding-left: 16px; position: relative; line-height: 1.5; }
+  .feature li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); opacity: .55; }
+
+  /* Servis masası canlı durum örneği */
+  .desk { margin-top: 16px; border: 1px solid var(--border); border-radius: var(--r-m); overflow: hidden; background: var(--surface); }
+  .desk-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .desk-row:last-child { border-bottom: none; }
+  .desk-row span { font-size: 13px; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chip {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+    border: 1px solid currentColor;
+  }
+  .chip.ok { color: var(--ok); }
+  .chip.warn { color: var(--warn); }
+  .chip.crit { color: var(--crit); }
+  .desk-note { padding: 9px 14px; font-size: 11.5px; color: var(--muted); border-top: 1px dashed var(--border); }
+
+  /* Modül ızgarası */
+  .modules { margin-top: 52px; }
+  .modules h3 { font-size: 15px; letter-spacing: -.01em; margin-bottom: 4px; }
+  .modules > p { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+  .module-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-m); overflow: hidden; }
+  .module { background: var(--surface); padding: 16px 16px 18px; transition: background .18s ease; }
+  .module:hover { background: var(--surface-2); }
+  .module b { display: block; font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+  .module span { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+  /* Modül kataloğu */
+  .catalog { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 24px; }
+  .cat { background: var(--surface-2); border-radius: 18px; padding: 22px 22px 24px; }
+  .cat h4 { font-size: 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 9px; }
+  .cat h4 .i { width: 7px; height: 7px; border-radius: 2px; background: var(--accent); flex: none; }
+  .cat ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 11px; }
+  .cat li { font-size: 13px; line-height: 1.45; }
+  .cat li b { display: block; font-weight: 600; color: var(--ink); font-size: 13px; }
+  .cat li span { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+
+  /* Platform yetenekleri */
+  .caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-m); overflow: hidden; margin-top: 24px; }
+  .cap { background: var(--surface); padding: 17px 19px; }
+  .cap b { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 4px; }
+  .cap span { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+  /* Teknoloji rozetleri */
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .tag {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px; padding: 5px 11px; border-radius: var(--r-s);
+    border: 1px solid var(--border); background: var(--surface); color: var(--ink-2);
+  }
+
+  /* Güvenlik bandı */
+  .gate {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-l);
+    padding: 34px; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 40px; align-items: center;
+  }
+  .gate h2 { font-size: clamp(23px, 2.9vw, 30px); }
+  .gate p { margin-top: 14px; color: var(--ink-2); font-size: 15.5px; line-height: 1.68; }
+  .gate-steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; border: 1px solid var(--border); border-radius: var(--r-m); overflow: hidden; }
+  .gate-steps li { display: grid; grid-template-columns: 30px 1fr; gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); align-items: start; }
+  .gate-steps li:last-child { border-bottom: none; }
+  .gate-steps .n { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: var(--accent-ink); padding-top: 2px; }
+  .gate-steps b { display: block; font-size: 14px; font-weight: 600; }
+  .gate-steps em { font-style: normal; display: block; font-size: 13px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+
+  /* İletişim */
+  .contact {
+    background:
+      radial-gradient(700px 320px at 12% 0%, rgba(0,113,227,.24), transparent 62%),
+      linear-gradient(165deg, var(--ink-800), var(--ink-900));
+    color: #F5F5F7;
+    border-radius: var(--r-l);
+    padding: 44px;
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 46px; align-items: center;
+  }
+  .contact h2 { color: #F5F5F7; font-size: clamp(25px, 3.1vw, 33px); }
+  .contact p { margin-top: 14px; color: #A1A1A6; font-size: 16px; line-height: 1.68; max-width: 46ch; }
+  .contact .eyebrow { color: #86868B; }
+  .contact-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .contact-list { margin: 0; padding: 0; display: grid; gap: 0; border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-m); overflow: hidden; }
+  .contact-list div { padding: 15px 18px; border-bottom: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.035); }
+  .contact-list div:last-child { border-bottom: none; }
+  .contact-list dt { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #86868B; margin: 0 0 5px; }
+  .contact-list dd { margin: 0; font-size: 14.5px; color: #F5F5F7; font-weight: 500; }
+  .contact-list a { color: #2997FF; text-decoration: none; }
+  .contact-list a:hover { text-decoration: underline; }
+
+  footer { border-top: 1px solid var(--border); padding-block: 30px 40px; }
+  .foot { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+  .foot-brand { display: grid; gap: 14px; }
+  .foot p { font-size: 13px; color: var(--muted); }
+  .foot nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  .foot nav a { font-size: 13px; color: var(--muted); text-decoration: none; }
+  .foot nav a:hover { color: var(--accent-ink); }
+
+  :where(a, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- Duyarlı ---------- */
+  @media (max-width: 980px) {
+    .hero-in { grid-template-columns: 1fr; gap: 44px; padding-block: 58px 52px; }
+    .product-head { grid-template-columns: 1fr; gap: 26px; }
+    .gate { grid-template-columns: 1fr; gap: 30px; padding: 28px; }
+    .contact { grid-template-columns: 1fr; gap: 32px; padding: 34px 28px; }
+    .module-grid { grid-template-columns: repeat(2, 1fr); }
+    .catalog { grid-template-columns: repeat(2, 1fr); }
+    .caps { grid-template-columns: repeat(2, 1fr); }
+    .metrics-in { grid-template-columns: repeat(3, 1fr); }
+    .nav { display: none; }
+  }
+  @media (max-width: 640px) {
+    section { padding-block: 60px; }
+    .features { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .pillar { border-right: none; }
+    .module-grid { grid-template-columns: 1fr; }
+    .catalog { grid-template-columns: 1fr; }
+    .caps { grid-template-columns: 1fr; }
+    .metrics-in { grid-template-columns: repeat(2, 1fr); }
+    .contact { padding: 28px 22px; }
+    .gate { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-in">
+    <a class="logo brand" href="#ust">
+      <svg class="logo-mark" width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="Meltemsoft">
+        <defs>
+          <linearGradient id="ml-hd" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1B2A47"/><stop offset="52%" stop-color="#1E7F8C"/><stop offset="100%" stop-color="#35D6C8"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="15" fill="url(#ml-hd)"/>
+        <path d="M17 45 V21 h5.4 L32 35.5 41.6 21 H47 v24 h-5.6 V30.4 L32.9 43.1 h-1.8 L22.6 30.4 V45 Z" fill="#FFFFFF"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-word">meltem<i>soft</i></span>
+        <span class="logo-tagline">Yazılım Çözümleri</span>
+      </span>
+      <span class="logo-code" aria-hidden="true">&lt;/&gt;</span>
+    </a>
+    <nav class="nav">
+      <a href="#opsplane">OpsPlane</a>
+      <a href="#gumruknet">GumrukNet</a>
+      <a href="#yaklasim">Yaklaşımımız</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+    <a class="btn btn-primary" href="#iletisim">Demo talep et</a>
+  </div>
+</header>
+
+<main id="ust">
+
+  <!-- ============ KAHRAMAN ============ -->
+  <div class="hero">
+    <div class="breeze" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap hero-in">
+      <div>
+        <p class="eyebrow">Meltemsoft · Kurumsal yazılım</p>
+        <h1>Kurumsal BT'nin tamamı <em>tek kontrol düzleminde</em>.</h1>
+        <p class="hero-lead">
+          Meltemsoft, envanterden servis masasına, ayrıcalıklı erişimden KVKK uyumuna kadar
+          bir BT departmanının günlük işini tek bir platformda toplayan kurumsal yazılımlar
+          geliştirir. Ürünlerimiz baştan sona Türkçe yazılır, kendi sunucunuzda çalışır ve
+          verinizi sizin dışınızda hiçbir yere taşımaz.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#opsplane">Ürünleri inceleyin</a>
+          <a class="btn btn-onnavy" href="#iletisim">Canlı demo planlayın</a>
+        </div>
+      </div>
+
+      <div class="planes">
+        <svg viewBox="0 0 420 330" role="img" aria-label="Üç düzlem: altta altyapı, ortada operasyon, üstte kontrol düzlemi">
+          <defs>
+            <linearGradient id="p-top" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7BD9FF"/><stop offset="55%" stop-color="#2997FF"/><stop offset="100%" stop-color="#0071E3"/>
+            </linearGradient>
+            <linearGradient id="p-mid" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#58585B"/><stop offset="100%" stop-color="#78787D"/>
+            </linearGradient>
+            <linearGradient id="p-bot" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2C2C2E"/><stop offset="100%" stop-color="#3F3F42"/>
+            </linearGradient>
+            <radialGradient id="p-glow" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="#0071E3" stop-opacity=".42"/><stop offset="100%" stop-color="#0071E3" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <ellipse cx="210" cy="86" rx="168" ry="74" fill="url(#p-glow)"/>
+
+          <path d="M210 214 L322 254 L210 294 L98 254 Z" fill="url(#p-bot)" stroke="url(#p-bot)" stroke-width="16" stroke-linejoin="round"/>
+          <path d="M210 148 L322 188 L210 228 L98 188 Z" fill="url(#p-mid)" stroke="url(#p-mid)" stroke-width="16" stroke-linejoin="round"/>
+          <path d="M210 42 L322 82 L210 122 L98 82 Z" fill="url(#p-top)" stroke="url(#p-top)" stroke-width="16" stroke-linejoin="round"/>
+
+          <path d="M210 214 L210 232" stroke="#78787D" stroke-width="7" stroke-linecap="round" opacity=".55" fill="none"/>
+          <path d="M210 122 L210 150" stroke="#2997FF" stroke-width="7" stroke-linecap="round" opacity=".6" fill="none"/>
+          <path d="M202 168 L210 160 L218 168" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".7"/>
+          <path d="M202 236 L210 228 L218 236" stroke="#C7C7CC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".55"/>
+
+          <text x="210" y="87" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, SF Mono, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2.4">KONTROL</text>
+          <text x="210" y="193" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, SF Mono, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2.4">OPERASYON</text>
+          <text x="210" y="259" text-anchor="middle" fill="#F5F5F7" font-family="ui-monospace, SF Mono, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="2.4">ALTYAPI</text>
+        </svg>
+
+        <ul class="plane-legend">
+          <li><span class="dot" style="background: linear-gradient(135deg,#7BD9FF,#0071E3)"></span><span><b>Kontrol düzlemi</b>Kokpit, uyarılar, raporlar, otomasyon ve yapay zekâ asistanı</span></li>
+          <li><span class="dot" style="background:#78787D"></span><span><b>Operasyon düzlemi</b>Servis masası, IAM, PAM, denetim &amp; uyum, lisans ve sözleşme</span></li>
+          <li><span class="dot" style="background:#3F3F42"></span><span><b>Altyapı düzlemi</b>Envanter, ağ topolojisi, izleme ajanı, uzak erişim ağ geçitleri</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="wrap" style="padding-inline:0">
+        <div class="metrics-in">
+          <div class="metric"><b>45</b><span>modül</span></div>
+          <div class="metric"><b>226</b><span>uygulama ekranı</span></div>
+          <div class="metric"><b>91</b><span>API ucu</span></div>
+          <div class="metric"><b>180</b><span>veri modeli</span></div>
+          <div class="metric"><b>154</b><span>şema göçü</span></div>
+          <div class="metric"><b>102</b><span>otomatik test</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ NEDEN ============ -->
+  <div class="band">
+  <section class="wrap" id="neden">
+    <div class="sec-head">
+      <p class="eyebrow">Firma</p>
+      <h2>Kurumsal yazılımı yakından tanıyan küçük bir ekip.</h2>
+      <p>
+        Meltemsoft, BT operasyonlarını içeriden bilen bir ekip tarafından kuruldu. Ürünlerimizi
+        rafta duran bir paketi yerelleştirerek değil, sahadaki işin kendisinden yola çıkarak
+        yazıyoruz: menüdeki her kelime, veritabanındaki her alan adı Türkçe ve ekranlar
+        gerçek bir BT yöneticisinin gününe göre kurgulanmış durumda.
+      </p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="k">Tek platform</span>
+        <h3>Dağınık araçlar yerine bir sistem</h3>
+        <p>Envanter, servis masası, lisans, erişim yönetimi ve uyum aynı veri modelini paylaşır. Bir cihaz bir kez kaydedilir; talebinde, lisansında, denetiminde aynı kayıt görünür.</p>
+      </div>
+      <div class="pillar">
+        <span class="k">Kendi sunucunuzda</span>
+        <h3>Veriniz kurumun içinde kalır</h3>
+        <p>Docker Compose ile tek sunucuda, Helm grafiğiyle Kubernetes kümesinde çalışır. Bulut zorunluluğu yok; kapalı ağda kurulabilir, güncellemeler kendi takviminizle yapılır.</p>
+      </div>
+      <div class="pillar">
+        <span class="k">Uyum ve denetim</span>
+        <h3>Her işlem kayıt bırakır</h3>
+        <p>Rol bazlı yetkilendirme, firma (tenant) izolasyonu, değişiklik denetimi ve syslog aktarımı platformun temelinde. KVKK ve VERBİS süreçleri ayrı bir modül olarak yürür.</p>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- ============ OPSPLANE ============ -->
+  <section class="wrap product" id="opsplane">
+    <div class="product-head">
+      <div>
+        <span class="product-badge live">● Üretimde</span>
+        <div class="product-title">
+          <h2>OpsPlane</h2>
+        </div>
+        <p class="product-sub">IT Varlık, Erişim ve Risk Yönetimi Platformu</p>
+      </div>
+      <div>
+        <p class="product-desc">
+          OpsPlane, bir kurumun bilgi teknolojileri varlıklarını, erişimlerini, hizmetlerini
+          ve uyum yükümlülüklerini uçtan uca yöneten bütünleşik bir platform. Sekiz ana başlık
+          altında 45 modül, 226 ekran ve 91 servis ucu tek bir veri modelini paylaşır: bir cihaz bir kez kaydedilir, sonra talebinde, lisansında,
+          zafiyetinde, denetim kanıtında ve faturasında aynı kayıt olarak görünür.
+        </p>
+        <p class="product-desc">
+          Rol bazlı yetkilendirme ve firma izolasyonu platformun temelinde. Çok müşterili (MSP)
+          kullanım için tasarlandı: her firmanın verisi ayrı tutulur, tek panelden onlarca
+          müşteri yönetilir ve faturalama çıktısı alınır.
+        </p>
+      </div>
+    </div>
+
+    <div class="features">
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Envanter ve toplayıcı ajan</h3>
+        <p>
+          Windows'ta hizmet, Linux'ta systemd zamanlayıcısı olarak çalışan tek dosyalık bir
+          Go ajanı. Üçüncü parti bağımlılığı yok, port dinlemez, sunucudan gelen hiçbir komutu
+          çalıştırmaz — veri akışı tek yönlüdür, cihazdan sunucuya.
+        </p>
+        <ul>
+          <li>Envanter 6 saatte bir, servis durumu 5 dakikada, metrik 1 dakikada raporlanır</li>
+          <li>Donanım, seri no, işletim sistemi, IP/MAC, domain ve kurulu uygulama listesi</li>
+          <li>Cihaz, lokasyon, sorumlu, müşteri, domain ve devre kayıtları tek envanterde</li>
+          <li>Excel ile toplu içe aktarma, dışa aktarma ve cihaz künyesi PDF çıktısı</li>
+          <li>Ağ topolojisi, VLAN bazlı IP envanteri ve otomatik cihaz keşfi</li>
+          <li>Barkod ve QR okuyucuyla sayım, zimmet ve hurda süreci</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg> İzleme, uyarı ve otomasyon</h3>
+        <p>
+          CPU, bellek, disk, servis, port, çalışma süresi ve sıcaklık ölçümleri ajan ve SNMP
+          üzerinden toplanır. Eşik kuralları seviye ve süre bazlıdır; veri göndermeyi kesen
+          cihaz da kendi başına bir uyarıdır.
+        </p>
+        <ul>
+          <li>Cihaz bazlı metrik geçmişi ve aktif eşik uyarıları</li>
+          <li>Uyarı kanalları: e-posta, Slack, Microsoft Teams, webhook ve SMS</li>
+          <li>Günlük uyarı özeti ve bekleyen uyarı kuyruğu</li>
+          <li>Kural tabanlı otomasyon ve çalıştırma geçmişi</li>
+          <li>Değişiklik denetimi: cihaz yapılandırmasını kim değiştirdi (syslog + üretici API)</li>
+          <li>Ping, tracert, nslookup, subnet hesaplama ve IP lokasyon araçları</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Servis masası (ITSM)</h3>
+        <p>
+          Talep ekranında cihazın canlı durumu görünür: teknisyen "bilgisayarınız açık mı"
+          diye sormaz, ekranda görür. Nöbet çizelgesi ve eskalasyon zinciri modülün içinde;
+          SLA sayacı müşteri beklemesinde duraklatılır ve rapor bu ayrımı korur.
+        </p>
+        <div class="desk" aria-label="Örnek talep listesi">
+          <div class="desk-row"><span>#4182 · Muhasebe yazıcısı yanıt vermiyor</span><span class="chip crit">SLA 12 dk</span></div>
+          <div class="desk-row"><span>#4179 · Yeni personel hesap açılışı</span><span class="chip warn">Onay bekliyor</span></div>
+          <div class="desk-row"><span>#4174 · VPN erişim talebi · SRV-02 çevrimiçi</span><span class="chip ok">Çözüldü</span></div>
+          <p class="desk-note">Örnek veridir — gerçek kurulumda kendi talepleriniz listelenir.</p>
+        </div>
+        <ul>
+          <li>Olay, problem, değişiklik, release ve büyük olay yönetimi</li>
+          <li>Hizmet kataloğu, kategoriler, departmanlar ve bilgi bankası</li>
+          <li>SLA raporlama, servis masası raporları ve memnuniyet anketi</li>
+          <li>Son kullanıcı portalı: kendi taleplerini açar ve izler</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> Kimlik ve erişim yönetimi (IAM)</h3>
+        <p>
+          Active Directory ile senkron çalışır; kim, neye, ne zaman erişiyor sorusunun tek
+          cevap yeri. İşe alım ve ayrılış akışları şablona bağlanır, dönemsel erişim gözden
+          geçirmeleri kampanya olarak yürütülür.
+        </p>
+        <ul>
+          <li>Hesap envanteri ve dizin denetimi (AD/LDAP)</li>
+          <li>İşe alım / ayrılış süreçleri ve görev şablonları</li>
+          <li>Erişim gözden geçirme kampanyaları ve onay kayıtları</li>
+          <li>Görev ayrılığı (SoD) çakışma kontrolü</li>
+          <li>Servis hesabı envanteri ve sahiplik takibi</li>
+          <li>Uygulama sapması: kimde olmaması gereken uygulama var</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Ayrıcalıklı erişim ve parola kasası</h3>
+        <p>
+          Sunucuya, anahtara veya hat cihazına bağlanma işi tarayıcıdan, politikaya tabi ve
+          kayıt altında yapılır. Parolalar merkezî kasada tutulur; erişim kayıtları ve ihlal
+          bildirimleri ayrı tutulur.
+        </p>
+        <ul>
+          <li>PAM: cihaza bağlan, oturum kaydı, politika ve ihlal bildirimi</li>
+          <li>Parola kasası: gruplar, parola üretici, erişim kayıtları</li>
+          <li>Kurumsal tarayıcı eklentisi (Chrome ve Firefox) ile kasadan otomatik doldurma</li>
+          <li>Self-servis parola portalı — ayrı adresten, oturumsuz çalışır</li>
+          <li>Uzak destek: MeshCentral üzerinden son kullanıcı ekranına bağlanma ve geçmiş</li>
+          <li>SSO (SAML), LDAP senkronu ve TOTP tabanlı iki adımlı doğrulama</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> Güvenlik platformu ve yaşam döngüsü</h3>
+        <p>
+          Varlık, tarama, bulgu ve istihbarat aynı platformda birleşir. Zafiyetler dış
+          tarayıcılardan içe aktarılır ve envanterdeki cihazla eşleştirilir; eşleşmeyenler
+          ayrı listede bekler, sessizce kaybolmaz.
+        </p>
+        <ul>
+          <li>Assessment akışı: hedef, modül ve çerçeve seçimiyle tarama başlatma</li>
+          <li>Varlık, bulgu ve tehdit istihbaratı ekranları</li>
+          <li>Web tarama motoru ve VirusTotal ile link kontrolü, yük testi</li>
+          <li>Zafiyet içe aktarma, cihaz eşleştirme ve eşleşmeyen kayıt kuyruğu</li>
+          <li>Kullanım ömrü sonu (EOL) ve risk kaydı yönetimi</li>
+          <li>Sertifika envanteri ve süre dolmadan uyarı</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 18h4"/></svg> Denetim, uyum ve KVKK</h3>
+        <p>
+          Denetimler, kontrol kataloğu, kanıt dosyaları ve uygunsuzluk kayıtları tek yerde
+          toplanır. Denetçiye süreli ve kapsamı sınırlı bir erişim bağlantısı verilir; kurum
+          ağına kullanıcı açmaya gerek kalmaz.
+        </p>
+        <ul>
+          <li>Denetim planlama, kontrol kataloğu, kanıt toplama ve uygunsuzluk takibi</li>
+          <li>Denetçi erişim bağlantısı, denetim paketi ve raporları</li>
+          <li>Bilgi kitaplığı ve doküman talepleri</li>
+          <li>KVKK: veri envanteri, aydınlatma, açık rıza, sözleşme ve tedbirler</li>
+          <li>VERBİS raporu, ihlal bildirim taslağı ve imha tutanağı üretimi</li>
+          <li>Doküman yönetimi (DMS): sürüm, onay ve ret akışıyla; güvenli dosya paylaşımı</li>
+        </ul>
+      </article>
+
+      <article class="feature">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Lisans, bütçe ve raporlama</h3>
+        <p>
+          Satın alınan lisans ile cihazlarda gerçekten kurulu olan yazılım karşılaştırılır;
+          uyum farkı rapora dönüşür. Bütçe, sözleşme ve garanti süreleri aynı varlık kaydının
+          üzerinden yürür.
+        </p>
+        <ul>
+          <li>Yazılım envanteri, lisans kayıtları ve kurulu uygulamayla eşleştirme</li>
+          <li>Lisans uyum raporu (PDF) ve yedekleme kayıtları</li>
+          <li>Bütçe, sözleşme, garanti ve yenileme takibi</li>
+          <li>Yönetici kokpiti: toplam varlık ve önümüzdeki 12 ayın yükü</li>
+          <li>Zamanlanmış raporlar — günlük, haftalık veya aylık e-posta</li>
+          <li>CSV ve Excel çıktısı, MSP faturalama dökümü</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="modules">
+      <h3>Modüllerin tamamı</h3>
+      <p>Uygulamanın kendi menü yapısı — hepsi aynı yetki ve firma izolasyonu modelinin üzerinde çalışır.</p>
+      <div class="catalog">
+        <div class="cat">
+          <h4><span class="i"></span>Altyapı</h4>
+          <ul>
+            <li><b>Envanter</b><span>Cihaz, lokasyon, sorumlu, müşteri, domain, devre</span></li>
+            <li><b>Topoloji</b><span>Ağ haritası</span></li>
+            <li><b>IP Envanteri</b><span>VLAN blokları, cihaz eşleştirme</span></li>
+            <li><b>PAM</b><span>Ayrıcalıklı erişim ve oturum kayıtları</span></li>
+            <li><b>Keşif &amp; İzleme</b><span>Otomatik cihaz keşfi</span></li>
+            <li><b>Değişiklik Denetimi</b><span>Yapılandırma değişikliği izi</span></li>
+            <li><b>İzleme</b><span>Metrik, eşik kuralları, servis durumu</span></li>
+            <li><b>Yaşam Döngüsü</b><span>EOL, risk ve zafiyet kaydı</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h4><span class="i"></span>Operasyon</h4>
+          <ul>
+            <li><b>Servis Masası</b><span>Talep, SLA, nöbet, problem, değişiklik, release</span></li>
+            <li><b>Uzak Destek</b><span>Son kullanıcı ekranına bağlanma</span></li>
+            <li><b>Uyarılar</b><span>Bekleyen uyarılar ve günlük özet</span></li>
+            <li><b>Otomasyon</b><span>Kural tabanlı işlem ve geçmiş</span></li>
+            <li><b>Yapay Zekâ</b><span>Kurum verisi üzerinde asistan</span></li>
+            <li><b>Linkler</b><span>Kurum içi bağlantı rehberi</span></li>
+            <li><b>Bakım Görevleri</b><span>Periyodik bakım ve takvim</span></li>
+            <li><b>Haftalık İşler</b><span>Ekip iş planı ve raporu</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h4><span class="i"></span>Kimlik ve erişim (IAM)</h4>
+          <ul>
+            <li><b>IAM Panosu</b><span>Genel durum</span></li>
+            <li><b>Hesaplar</b><span>Dizin hesap envanteri</span></li>
+            <li><b>İşe Alım / Ayrılış</b><span>Süreçler ve görev şablonları</span></li>
+            <li><b>Erişim Gözden Geçirme</b><span>Dönemsel kampanyalar</span></li>
+            <li><b>Servis Hesapları</b><span>Sahiplik ve kullanım takibi</span></li>
+            <li><b>Görev Ayrılığı (SoD)</b><span>Çakışan yetki kontrolü</span></li>
+            <li><b>Uygulama Sapması</b><span>Beklenmeyen kurulumlar</span></li>
+            <li><b>Dizin Denetimi</b><span>AD/LDAP değişiklik izi</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h4><span class="i"></span>Güvenlik</h4>
+          <ul>
+            <li><b>Security Platform</b><span>Varlık, tarama, bulgu, istihbarat</span></li>
+            <li><b>Yeni Assessment</b><span>Hedef ve çerçeve seçimiyle tarama</span></li>
+            <li><b>Link Taraması</b><span>Web tarama motoru, VirusTotal</span></li>
+            <li><b>Yük Testi</b><span>Servis dayanıklılık testi</span></li>
+            <li><b>Parola Kasası</b><span>Gruplar, üretici, erişim kayıtları</span></li>
+            <li><b>Sertifikalar</b><span>Envanter ve süre uyarısı</span></li>
+            <li><b>Tarayıcı Eklentisi</b><span>Chrome ve Firefox kasa eklentisi</span></li>
+            <li><b>Parola Portalı</b><span>Self-servis sıfırlama</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h4><span class="i"></span>Uyum</h4>
+          <ul>
+            <li><b>Denetim &amp; Uyum</b><span>Denetim, kanıt, uygunsuzluk, kontrol kataloğu</span></li>
+            <li><b>Denetçi Erişimi</b><span>Süreli ve kapsamı sınırlı bağlantı</span></li>
+            <li><b>KVKK &amp; VERBİS</b><span>Envanter, aydınlatma, ihlal, imha, tedbirler</span></li>
+            <li><b>Dokümanlar (DMS)</b><span>Sürüm, onay ve ret akışı</span></li>
+            <li><b>Dosya Paylaşımı</b><span>Süreli ve izlenen paylaşım</span></li>
+            <li><b>Evraklar</b><span>Kurumsal evrak arşivi</span></li>
+            <li><b>Bilgi Kitaplığı</b><span>Politika ve prosedür metinleri</span></li>
+            <li><b>Tarama Dokümanı</b><span>Taranan belgelerin kaydı</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h4><span class="i"></span>Yönetim</h4>
+          <ul>
+            <li><b>Yazılım &amp; Lisans</b><span>Lisans, yazılım, uyum, yedekleme</span></li>
+            <li><b>Bütçe &amp; Sözleşme</b><span>Maliyet ve sözleşme takibi</span></li>
+            <li><b>Garanti &amp; Sözleşmeler</b><span>Garanti süresi ve yenileme</span></li>
+            <li><b>Yönetici Kokpiti</b><span>Varlık toplamı, 12 aylık yük</span></li>
+            <li><b>Kokpit</b><span>Rol bazlı gösterge paneli</span></li>
+            <li><b>Sayım</b><span>Barkod ve QR ile fiziksel sayım</span></li>
+            <li><b>QR Etiket</b><span>Etiketi okut, cihaz künyesini aç</span></li>
+            <li><b>MSP Panosu</b><span>Çapraz müşteri yönetimi ve faturalama</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h4><span class="i"></span>Sistem</h4>
+          <ul>
+            <li><b>Raporlar</b><span>Varlık raporları, zamanlanmış e-posta, CSV</span></li>
+            <li><b>Güncelleme Merkezi</b><span>Bileşen sürümleri ve güncelleme adayları</span></li>
+            <li><b>Ağ Araçları</b><span>Ping, tracert, nslookup, subnet, IP lokasyon</span></li>
+            <li><b>Uygulama Log</b><span>Denetim kaydı ve kullanıcı izi</span></li>
+            <li><b>Deploy Paneli</b><span>Onay kapısı ve dağıtım geçmişi</span></li>
+            <li><b>Kurulum Sihirbazı</b><span>İlk kurulum ve örnek veri</span></li>
+            <li><b>Durum Sayfası</b><span>Servis sağlığı</span></li>
+            <li><b>Kurulum Paketi</b><span>Ajan MSI ve kurulum betiği üretimi</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h4><span class="i"></span>Son kullanıcı</h4>
+          <ul>
+            <li><b>Taleplerim</b><span>Kendi taleplerini aç ve izle</span></li>
+            <li><b>Destek Talebi</b><span>Basitleştirilmiş talep formu</span></li>
+            <li><b>Memnuniyet</b><span>Talep kapanışında anket</span></li>
+            <li><b>Parola Portalı</b><span>Oturumsuz self-servis sıfırlama</span></li>
+            <li><b>Hesabım</b><span>Profil ve iki adımlı doğrulama</span></li>
+            <li><b>Sohbet</b><span>Uygulama içi destek sohbeti</span></li>
+            <li><b>Mobil (PWA)</b><span>Telefona kurulabilir arayüz</span></li>
+            <li><b>Kamera Sayımı</b><span>Telefon kamerasıyla barkod okuma</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top:52px">Platform yetenekleri</h3>
+      <p>Modüllerin altında ortak çalışan altyapı.</p>
+      <div class="caps">
+        <div class="cap"><b>Çok firmalı (multi-tenant)</b><span>Her firmanın verisi izole; MSP tenant'ı çapraz görür.</span></div>
+        <div class="cap"><b>Rol bazlı yetki</b><span>45 modül anahtarı üzerinden rol tanımı ve menü süzgeci.</span></div>
+        <div class="cap"><b>Kurumsal kimlik</b><span>SAML SSO, LDAP/AD senkronu, TOTP ile iki adımlı doğrulama.</span></div>
+        <div class="cap"><b>REST API</b><span>/api/v1 uçları ve OpenAPI dokümanı, API anahtarı yönetimi.</span></div>
+        <div class="cap"><b>Bildirim kanalları</b><span>E-posta (SMTP), Slack, Microsoft Teams, webhook ve SMS.</span></div>
+        <div class="cap"><b>SIEM aktarımı</b><span>Denetim kaydı, uyarılar, PAM oturumları ve kasa olayları.</span></div>
+        <div class="cap"><b>Onay mekanizması</b><span>Kritik işlemler için ikinci onay ve kayıt.</span></div>
+        <div class="cap"><b>Marka ve dil</b><span>Kurum logosu, renkleri; Türkçe ve İngilizce arayüz.</span></div>
+        <div class="cap"><b>Veri aktarımı</b><span>Excel ile içe aktarma, CSV/Excel/PDF dışa aktarma.</span></div>
+        <div class="cap"><b>Kurulum</b><span>Docker Compose ile tek sunucu ya da Helm ile Kubernetes.</span></div>
+        <div class="cap"><b>HTTPS ve sırlar</b><span>Otomatik sertifika, sır üretimi ve güncelleme ajanı.</span></div>
+        <div class="cap"><b>Dosya depolama</b><span>MinIO üzerinde nesne deposu; yedekleme kayıtları.</span></div>
+      </div>
+
+      <div class="stack" aria-label="Teknoloji yığını">
+        <span class="tag">Next.js 14</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Prisma</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">NextAuth · SAML · LDAP</span>
+        <span class="tag">Go ajan</span>
+        <span class="tag">MeshCentral</span>
+        <span class="tag">SNMP</span>
+        <span class="tag">MinIO</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Kubernetes + Helm</span>
+        <span class="tag">Vitest</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUMRUKNET ============ -->
+  <section class="wrap product" id="gumruknet">
+    <div class="product-head">
+      <div>
+        <span class="product-badge soon">● Geliştirme aşamasında</span>
+        <div class="product-title">
+          <h2>GumrukNet</h2>
+        </div>
+        <p class="product-sub">Gümrük Masası — dış ticaret operasyon platformu</p>
+      </div>
+      <div>
+        <p class="product-desc">
+          GumrukNet, gümrük ve dış ticaret operasyonlarını tek bir masada toplamak üzere
+          geliştirdiğimiz ikinci ürünümüz. Beyanname dosyaları, evrak akışı ve süreç takibi
+          gibi birbirinden kopuk yürüyen işleri, OpsPlane ile aynı platform temelinin
+          üzerinde bir araya getirmeyi hedefliyor.
+        </p>
+        <p class="product-desc">
+          Ürün henüz geliştirme aşamasında; kapsam ve yol haritası üzerinde çalışıyoruz.
+          Erken erişim ve pilot kullanım için bizimle iletişime geçebilirsiniz.
+        </p>
+        <div class="hero-cta" style="margin-top:22px">
+          <a class="btn btn-ghost" href="#iletisim">Erken erişim için yazın</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ YAKLAŞIM ============ -->
+  <div class="band">
+  <section class="wrap" id="yaklasim">
+    <div class="gate">
+      <div>
+        <p class="eyebrow">Çalışma biçimimiz</p>
+        <h2>Onaydan geçmemiş hiçbir değişiklik üretime giremez.</h2>
+        <p>
+          Kurumsal bir platformda asıl risk, kodun kendisi değil kontrolsüz değişikliktir.
+          Bu yüzden dağıtım sürecimizi bir onay kapısı olarak kurduk: her değişiklik taramadan
+          geçer, onayı insan verir ve reddedilen bir girişim de başarılı bir dağıtım kadar
+          ayrıntılı biçimde kaydedilir.
+        </p>
+      </div>
+      <ol class="gate-steps">
+        <li><span class="n">01</span><span><b>Geliştirme ve doğrulama</b><em>Tip kontrolü, lint ve otomatik testler her değişiklikte koşar</em></span></li>
+        <li><span class="n">02</span><span><b>Sunucu tarafı güvenlik taraması</b><em>Firma izolasyonunu atlayan sorgu gibi bulgular dağıtımı durdurur</em></span></li>
+        <li><span class="n">03</span><span><b>İnsan onayı</b><em>Ana dala alma ve dağıtımı başlatma yetkisi yalnızca yetkili kişide</em></span></li>
+        <li><span class="n">04</span><span><b>Denetim kaydı</b><em>Onay, ret ve dağıtım geçmişi panelden geriye dönük izlenir</em></span></li>
+      </ol>
+    </div>
+  </section>
+  </div>
+
+  <!-- ============ İLETİŞİM ============ -->
+  <section class="wrap" id="iletisim">
+    <div class="contact">
+      <div>
+        <p class="eyebrow">İletişim</p>
+        <h2>Kurumunuzda nasıl çalışacağını birlikte görelim.</h2>
+        <p>
+          Bize kurumunuzun büyüklüğünü ve bugün hangi araçları kullandığınızı yazın;
+          size ürünü kendi senaryonuzla gösterelim. Kurulum seçeneklerini ve geçiş
+          planını da aynı görüşmede konuşuruz.
+        </p>
+        <div class="contact-cta">
+          <a class="btn btn-primary" href="mailto:info@meltemsoft.com?subject=Demo%20talebi">Demo talep et</a>
+          <a class="btn btn-onnavy" href="mailto:info@meltemsoft.com">info@meltemsoft.com</a>
+        </div>
+      </div>
+      <dl class="contact-list">
+        <div><dt>E-posta</dt><dd><a href="mailto:info@meltemsoft.com">info@meltemsoft.com</a></dd></div>
+        <div><dt>Ürünler</dt><dd>OpsPlane · GumrukNet</dd></div>
+        <div><dt>Kurulum</dt><dd>Kendi sunucunuzda · Docker veya Kubernetes</dd></div>
+        <div><dt>Arayüz ve destek</dt><dd>Türkçe</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-brand">
+      <span class="logo logo-lg">
+        <svg class="logo-mark" width="40" height="40" viewBox="0 0 64 64" role="img" aria-label="Meltemsoft">
+        <defs>
+          <linearGradient id="ml-ft" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1B2A47"/><stop offset="52%" stop-color="#1E7F8C"/><stop offset="100%" stop-color="#35D6C8"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="15" fill="url(#ml-ft)"/>
+        <path d="M17 45 V21 h5.4 L32 35.5 41.6 21 H47 v24 h-5.6 V30.4 L32.9 43.1 h-1.8 L22.6 30.4 V45 Z" fill="#FFFFFF"/>
+      </svg>
+        <span class="logo-text">
+          <span class="logo-word">meltem<i>soft</i></span>
+          <span class="logo-tagline">Yazılım Çözümleri</span>
+        </span>
+      </span>
+      <p>© <span id="yil">2026</span> Meltemsoft. Tüm hakları saklıdır.</p>
+    </div>
+    <nav>
+      <a href="#opsplane">OpsPlane</a>
+      <a href="#gumruknet">GumrukNet</a>
+      <a href="#yaklasim">Yaklaşımımız</a>
+      <a href="mailto:info@meltemsoft.com">İletişim</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var bar = document.getElementById('topbar');
+    var onScroll = function () {
+      bar.classList.toggle('is-stuck', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var y = document.getElementById('yil');
+    if (y) { y.textContent = String(new Date().getFullYear()); }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+.git
+.gitignore
+README.md
+k8s.yaml
+kur-rke2.sh
