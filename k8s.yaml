@@ -18,6 +18,18 @@ metadata:
   namespace: meltemsoft-web
 spec:
   replicas: 2
+  # Varsayılan RollingUpdate 2 kopyada maxUnavailable'ı 0'a yuvarlar: yeni pod
+  # Ready olmadan eskisi kapanmaz ve kümede 3. pod'a yer yoksa güncelleme
+  # süresiz askıda kalır. Statik bir sayfada bir kopyanın anlık düşmesi
+  # sorun değil, askıda kalması sorundur.
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  # Takılan bir rollout sessizce beklemesin; 2 dakikada hata versin.
+  progressDeadlineSeconds: 120
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: meltemsoft-web
